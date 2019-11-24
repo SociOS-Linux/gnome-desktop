@@ -25,7 +25,6 @@
 
 #include <glib.h>
 #include <glib/gi18n-lib.h>
-#include <gdk/gdkx.h>
 #include <gdk/gdk.h>
 #if defined(GDK_WINDOWING_WAYLAND)
 #include <gdk/gdkwayland.h>
@@ -208,8 +207,8 @@ gnome_idle_monitor_set_property (GObject      *object,
 
 		g_free (monitor->priv->path);
 		if (monitor->priv->device) {
-			monitor->priv->path = g_strdup_printf ("/org/gnome/Mutter/IdleMonitor/Device%d",
-							       gdk_x11_device_get_id (monitor->priv->device));
+			monitor->priv->path = g_strdup_printf ("/org/gnome/Mutter/IdleMonitor/Device%s",
+							       gdk_device_get_product_id (monitor->priv->device));
 		} else {
 			monitor->priv->path = g_strdup ("/org/gnome/Mutter/IdleMonitor/Core");
 		}
