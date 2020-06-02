@@ -25,6 +25,7 @@ build_stable:
     - meson --prefix=/usr -Dinstalled_tests=true build
     - pushd build
     - ninja
+    - ninja dist
     - ninja install
     - G_MESSAGES_DEBUG=all xvfb-run -a -s "-screen 0 1024x768x24" ninja test
     - G_MESSAGES_DEBUG=all xvfb-run -a -s "-screen 0 1024x768x24"
